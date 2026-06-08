@@ -1,51 +1,57 @@
-// Webhook pour notifier l'admin des demandes sur Discord
 const ADMIN_WEBHOOK_URL = "https://discord.com/api/webhooks/1513491854069469317/i3mOtYEw_MU2lorvLKmP-MTxZ479BmZ6oxe5rDV8BOUTyfWGmn90Rs3xZw83ORoRif94";
 const ADMIN_PHONE = "0702797128";
 
 document.getElementById('authForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const name = document.getElementById('clientName').value;
-    const phone = document.getElementById('clientPhone').value;
-    const code = document.getElementById('accessCode').value;
+    const name = document.getElementById('clientName').value.trim();
+    const phone = document.getElementById('clientPhone').value.trim();
+    const code = document.getElementById('accessCode').value.trim();
 
-    // Sauvegarde temporaire des infos du client pour le panier plus tard
+    // On stocke tout de suite dans le téléphone pour la boutique
     localStorage.setItem('nordic_user_name', name);
     localStorage.setItem('nordic_user_phone', phone);
 
-    // Code passe-partout pour forcer l'entrée ou si l'admin lui a déjà donné
-    if (code.toLowerCase() === "nordic2026" || code.trim() !== "") {
-        alert("🔓 Code validé ! Bienvenue chez NORDIC.");
+    // Code direct si l'admin lui a déjà donné son accès
+    if (code.toLowerCase() === "nordic2026" || code !== "") {
         window.location.href = "shop.html";
         return;
     }
 
+    const messageWhatsApp = `Salut NORDIC ! Je souhaite rejoindre le site de vente privé.\n👤 Nom: ${name}\n📞 Numéro: ${phone}\nPeux-tu me donner le code d'accès ?`;
+    const urlWhatsApp = `https://wa.me/225${ADMIN_PHONE}?text=${encodeURIComponent(messageWhatsApp)}`;
+
     const discordPayload = {
         embeds: [{
-            title: "🔐 Nouvelle demande d'intégration au site NORDIC",
-            color: 16777215,
+            title: "🔐 Nouvelle demande d'intégration - NORDIC",
+            color: 0,
             fields: [
                 { name: "👤 Client", value: name, inline: true },
-                { name: "📞 Téléphone", value: phone, inline: true },
-                { name: "💬 Action Requise", value: `Attribuer un code d'accès et valider au ${phone}`, inline: false }
+                { name: "📞 Téléphone", value: phone, inline: true }
             ],
-            footer: { text: "Système d'accès NORDIC PWA" }
+            footer: { text: "Système d'accès Privé" }
         }]
     };
 
     try {
+        // Envoi avec une limite de temps pour éviter que le site reste figé si Discord bugue
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
+
         await fetch(ADMIN_WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(discordPayload)
+            body: JSON.stringify(discordPayload),
+            signal: controller.signal
         });
-
-        alert("📥 Demande reçue par l'admin ! Vous allez être redirigé vers son WhatsApp pour récupérer le code.");
         
-        const whatsappMsg = encodeURIComponent(`Salut ! Je souhaite rejoindre le site privé NORDIC.\nNom: ${name}\nMon Numéro: ${phone}\nPeux-tu valider mon accès ?`);
-        window.location.href = `https://wa.me/225${ADMIN_PHONE}?text=${whatsappMsg}`;
+        clearTimeout(timeoutId);
+        alert("📥 Demande envoyée à la marque ! Redirection vers le gestionnaire WhatsApp.");
+        window.location.href = urlWhatsApp;
 
     } catch (error) {
-        window.location.href = "shop.html"; // Sécurité anti-blocage réseau
+        // En cas de bug réseau, on ne bloque pas le client, on l'envoie direct sur WhatsApp !
+        window.location.href = urlWhatsApp;
     }
 });
+
