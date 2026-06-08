@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORDIC | Boutique Officielle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">NORDIC</div>
+        <div class="cart-icon-container" onclick="toggleCart()">
+            <span>🛒 Panier</span>
+            <span id="cartCount" class="cart-count">0</span>
+        </div>
+    </header>
+
+    <section class="shop-hero">
+        <h1>COLLECTION NORDIC</h1>
+        <p>Chaque article est disponible au prix unique de <strong>10 000 FCFA</strong></p>
+    </section>
+
+    <main class="products-grid">
+        <div class="product-card">
+            <div class="product-tag">10,000 FCFA</div>
+            <div class="product-img-placeholder">🌸 DESIGN FLOWER</div>
+            <h3>T-Shirt Flower CMYK</h3>
+            <p>Coupe Oversize - 100% Coton Premium</p>
+            <button class="add-to-cart-btn" onclick="addToCart('T-Shirt Flower CMYK')">Ajouter au Panier</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-tag">10,000 FCFA</div>
+            <div class="product-img-placeholder">⭐ NORDIC STAR</div>
+            <h3>T-Shirt Nordic Star</h3>
+            <p>Édition Spéciale Étoile & Graphismes</p>
+            <button class="add-to-cart-btn" onclick="addToCart('T-Shirt Nordic Star')">Ajouter au Panier</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-tag">10,000 FCFA</div>
+            <div class="product-img-placeholder">🩸 KING JESUS SPRAY</div>
+            <h3>T-Shirt King Jesus</h3>
+            <p>Style Urbain Rouge Pochoir</p>
+            <button class="add-to-cart-btn" onclick="addToCart('T-Shirt King Jesus')">Ajouter au Panier</button>
+        </div>
+    </main>
+
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Votre Panier</h2>
+            <button class="close-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cartItems" class="cart-items-container">
+            <p class="empty-msg">Votre panier est vide.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-box">
+                <span>Total:</span>
+                <span id="cartTotal">0 FCFA</span>
+            </div>
+            
+            <div class="form-group-pay">
+                <label for="payMethod">Mode de paiement 🇨🇮 :</label>
+                <select id="payMethod">
+                    <option value="Wave 🌊">Wave 🌊</option>
+                    <option value="Orange Money 🍊">Orange Money 🍊</option>
+                </select>
+            </div>
+
+            <div class="form-group-pay">
+                <label for="deliveryLocation">Lieu de livraison / Commune :</label>
+                <input type="text" id="deliveryLocation" placeholder="Ex: Cocody Cité des Arts" required>
+            </div>
+
+            <button class="checkout-btn" onclick="validateCheckout()">Passer la commande via WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="shop.js"></script>
+</body>
+</html>
