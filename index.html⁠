@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORDIC | Accès Privé</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="brand-badge">NORDIC</div>
+        <h1>DEMANDE D'ACCÈS PRIVÉ</h1>
+        <p class="subtitle">Collection Streetwear 100% Ivoirienne</p>
+        
+        <form id="authForm">
+            <div class="form-group">
+                <label for="clientName">Nom complet</label>
+                <input type="text" id="clientName" placeholder="Ex: NANGUI ARLETTE" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="clientPhone">Numéro de téléphone</label>
+                <input type="tel" id="clientPhone" placeholder="Ex: 0700000000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="accessCode">Code d'accès secret (Optionnel)</label>
+                <input type="password" id="accessCode" placeholder="Entrez votre code si vous en avez un">
+            </div>
+            
+            <button type="submit" class="neon-btn">Faire une demande d'accès</button>
+        </form>
+        
+        <div class="admin-notice">
+            <p>Pas encore de code ? La demande sera envoyée instantanément à l'administration pour validation.</p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>
