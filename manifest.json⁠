@@ -1,0 +1,14 @@
+{
+  "name": "NORDIC Clothing",
+  "short_name": "NORDIC",
+  "description": "Boutique privée de la marque de Streetwear Ivoirienne NORDIC.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme-color": "#050505",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
