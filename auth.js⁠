@@ -1,0 +1,51 @@
+// Webhook pour notifier l'admin des demandes sur Discord
+const ADMIN_WEBHOOK_URL = "https://discord.com/api/webhooks/1513491854069469317/i3mOtYEw_MU2lorvLKmP-MTxZ479BmZ6oxe5rDV8BOUTyfWGmn90Rs3xZw83ORoRif94";
+const ADMIN_PHONE = "0702797128";
+
+document.getElementById('authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('clientName').value;
+    const phone = document.getElementById('clientPhone').value;
+    const code = document.getElementById('accessCode').value;
+
+    // Sauvegarde temporaire des infos du client pour le panier plus tard
+    localStorage.setItem('nordic_user_name', name);
+    localStorage.setItem('nordic_user_phone', phone);
+
+    // Code passe-partout pour forcer l'entrée ou si l'admin lui a déjà donné
+    if (code.toLowerCase() === "nordic2026" || code.trim() !== "") {
+        alert("🔓 Code validé ! Bienvenue chez NORDIC.");
+        window.location.href = "shop.html";
+        return;
+    }
+
+    const discordPayload = {
+        embeds: [{
+            title: "🔐 Nouvelle demande d'intégration au site NORDIC",
+            color: 16777215,
+            fields: [
+                { name: "👤 Client", value: name, inline: true },
+                { name: "📞 Téléphone", value: phone, inline: true },
+                { name: "💬 Action Requise", value: `Attribuer un code d'accès et valider au ${phone}`, inline: false }
+            ],
+            footer: { text: "Système d'accès NORDIC PWA" }
+        }]
+    };
+
+    try {
+        await fetch(ADMIN_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(discordPayload)
+        });
+
+        alert("📥 Demande reçue par l'admin ! Vous allez être redirigé vers son WhatsApp pour récupérer le code.");
+        
+        const whatsappMsg = encodeURIComponent(`Salut ! Je souhaite rejoindre le site privé NORDIC.\nNom: ${name}\nMon Numéro: ${phone}\nPeux-tu valider mon accès ?`);
+        window.location.href = `https://wa.me/225${ADMIN_PHONE}?text=${whatsappMsg}`;
+
+    } catch (error) {
+        window.location.href = "shop.html"; // Sécurité anti-blocage réseau
+    }
+});
