@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">NORDIC</div>
+        <div class="logo">NØRD!C</div>
         <div class="cart-icon-container" onclick="toggleCart()">
             <span>🛒 Panier</span>
             <span id="cartCount" class="cart-count">0</span>
@@ -16,34 +16,60 @@
     </header>
 
     <section class="shop-hero">
-        <h1>COLLECTION NORDIC</h1>
-        <p>Chaque article est disponible au prix unique de <strong>10 000 FCFA</strong></p>
+        <h1>COLLECTION STREETWEAR</h1>
+        <p>Prix unique par article : <strong>10 000 FCFA</strong></p>
     </section>
 
     <main class="products-grid">
+        
         <div class="product-card">
-            <div class="product-tag">10,000 FCFA</div>
-            <div class="product-img-placeholder">🌸 DESIGN FLOWER</div>
+            <div class="product-tag">10 000k</div>
+            <div class="product-img-placeholder">🌸 DESIGN FLOWER TRIPLE</div>
             <h3>T-Shirt Flower CMYK</h3>
-            <p>Coupe Oversize - 100% Coton Premium</p>
+            <p>Fleurs Cyan, Jaune, Magenta - Coupe Oversize</p>
             <button class="add-to-cart-btn" onclick="addToCart('T-Shirt Flower CMYK')">Ajouter au Panier</button>
         </div>
 
         <div class="product-card">
-            <div class="product-tag">10,000 FCFA</div>
-            <div class="product-img-placeholder">⭐ NORDIC STAR</div>
+            <div class="product-tag">10 000k</div>
+            <div class="product-img-placeholder">⭐ NORDIC STAR SCRIPT</div>
             <h3>T-Shirt Nordic Star</h3>
-            <p>Édition Spéciale Étoile & Graphismes</p>
+            <p>Édition Étoile Bleue & Logo Cursive</p>
             <button class="add-to-cart-btn" onclick="addToCart('T-Shirt Nordic Star')">Ajouter au Panier</button>
         </div>
 
         <div class="product-card">
-            <div class="product-tag">10,000 FCFA</div>
+            <div class="product-tag">10 000k</div>
+            <div class="product-img-placeholder">💵 ALL IN GOD'S PLAN</div>
+            <h3>T-Shirt God's Plan</h3>
+            <p>Motifs Texture Dollars - Design Urbain</p>
+            <button class="add-to-cart-btn" onclick="addToCart('T-Shirt God\'s Plan')">Ajouter au Panier</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-tag">10 000k</div>
+            <div class="product-img-placeholder">👤 MOTION BLUR PROFILE</div>
+            <h3>T-Shirt Motion Face</h3>
+            <p>Effet flouté avant-garde Noir & Blanc</p>
+            <button class="add-to-cart-btn" onclick="addToCart('T-Shirt Motion Face')">Ajouter au Panier</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-tag">10 000k</div>
+            <div class="product-img-placeholder">🅰️ NORDIC VARSITY BLOCK</div>
+            <h3>T-Shirt Varsity Block</h3>
+            <p>Imprimé Universitaire Imposant</p>
+            <button class="add-to-cart-btn" onclick="addToCart('T-Shirt Varsity Block')">Ajouter au Panier</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-tag">10 000k</div>
             <div class="product-img-placeholder">🩸 KING JESUS SPRAY</div>
             <h3>T-Shirt King Jesus</h3>
-            <p>Style Urbain Rouge Pochoir</p>
+            <p>All We Need Is King Jesus - Portrait Rouge</p>
             <button class="add-to-cart-btn" onclick="addToCart('T-Shirt King Jesus')">Ajouter au Panier</button>
         </div>
+
     </main>
 
     <div id="cartSidebar" class="cart-sidebar">
@@ -70,7 +96,7 @@
 
             <div class="form-group-pay">
                 <label for="deliveryLocation">Lieu de livraison / Commune :</label>
-                <input type="text" id="deliveryLocation" placeholder="Ex: Cocody Cité des Arts" required>
+                <input type="text" id="deliveryLocation" placeholder="Ex: Angré Terminus 81" required>
             </div>
 
             <button class="checkout-btn" onclick="validateCheckout()">Passer la commande via WhatsApp</button>
