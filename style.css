@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #050505;
+    color: #ffffff;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+.auth-container {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 40px;
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    text-align: center;
+}
+.brand-badge {
+    display: inline-block;
+    background: #ffffff;
+    color: #000;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 6px 16px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+.subtitle { color: #666; font-size: 13px; margin-bottom: 35px; text-transform: uppercase; }
+.form-group, .form-group-pay { text-align: left; margin-bottom: 20px; }
+label { display: block; font-size: 12px; color: #888; text-transform: uppercase; margin-bottom: 8px; }
+input, select { width: 100%; padding: 14px; background: #141414; border: 1px solid #222; color: #fff; }
+input:focus, select:focus { outline: none; border-color: #fff; }
+
+.neon-btn, .checkout-btn {
+    width: 100%; padding: 16px; background: #fff; color: #000; font-weight: 900; text-transform: uppercase; cursor: pointer; border: none;
+}
+
+/* Boutique Styles */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #000; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #111; }
+.navbar .logo { font-weight: 900; font-size: 24px; letter-spacing: 6px; }
+.cart-icon-container { cursor: pointer; background: #111; padding: 10px 18px; display: flex; align-items: center; gap: 10px; border: 1px solid #222; }
+.cart-count { background: #fff; color: #000; padding: 2px 8px; font-size: 12px; border-radius: 50%; font-weight: bold; }
+
+.shop-hero { text-align: center; padding: 60px 20px; }
+.shop-hero h1 { font-size: 38px; letter-spacing: 6px; }
+
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
+.product-card { background: #0a0a0a; border: 1px solid #111; padding: 20px; position: relative; display: flex; flex-direction: column; }
+.product-tag { position: absolute; top: 15px; right: 15px; background: #fff; color: #000; font-weight: bold; font-size: 11px; padding: 4px 8px; }
+.product-img-placeholder { width: 100%; height: 320px; background: #111; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #444; margin-bottom: 15px; border: 1px dashed #222; font-weight: bold; }
+
+.add-to-cart-btn { width: 100%; padding: 12px; background: transparent; border: 1px solid #fff; color: #fff; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+.add-to-cart-btn:hover { background: #fff; color: #000; }
+
+/* Panier Volet */
+.cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: #0a0a0a; border-left: 1px solid #1a1a1a; padding: 30px; display: flex; flex-direction: column; z-index: 200; transition: right 0.3s ease; }
+.cart-sidebar.active { right: 0; }
+.cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; padding-bottom: 15px; margin-bottom: 20px; }
+.close-btn { background: transparent; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+.cart-items-container { flex-grow: 1; overflow-y: auto; }
+.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #111; }
+.remove-item-btn { background: transparent; border: none; color: #ff3b30; cursor: pointer; }
+.total-box { display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; margin: 20px 0; }
+@media (max-width: 450px) { .cart-sidebar { width: 100%; right: -100%; } }
