@@ -6,7 +6,7 @@
     <title>NORDIC | Accès Privé</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#050505">
 </head>
 <body>
     <div class="auth-container">
@@ -22,21 +22,28 @@
             
             <div class="form-group">
                 <label for="clientPhone">Numéro de téléphone</label>
-                <input type="tel" id="clientPhone" placeholder="Ex: 0700000000" required>
+                <input type="tel" id="clientPhone" placeholder="Ex: 0702797128" required>
             </div>
             
             <div class="form-group">
-                <label for="accessCode">Code d'accès secret (Optionnel)</label>
-                <input type="password" id="accessCode" placeholder="Entrez votre code si vous en avez un">
+                <label for="accessCode">Code d'accès secret (Si vous en avez un)</label>
+                <input type="password" id="accessCode" placeholder="Code optionnel">
             </div>
             
-            <button type="submit" class="neon-btn">Faire une demande d'accès</button>
+            <button type="submit" class="neon-btn">Demander l'accès au catalogue</button>
         </form>
         
         <div class="admin-notice">
-            <p>Pas encore de code ? La demande sera envoyée instantanément à l'administration pour validation.</p>
+            <p>Une fois soumis, vous serez mis en relation avec l'administration pour valider votre entrée.</p>
         </div>
     </div>
+
     <script src="auth.js"></script>
+    <script>
+        // Enregistrement du service worker pour éviter les crashs PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+        }
+    </script>
 </body>
 </html>
